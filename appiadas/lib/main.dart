@@ -17,12 +17,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Piada{
+class Piada {
   final String pergunta;
   final String resposta;
 
   Piada({required this.pergunta, required this.resposta});
-
 }
 
 //stf
@@ -35,34 +34,32 @@ class AppiadasScreen extends StatefulWidget {
 }
 
 class _AppiadasScreenState extends State<AppiadasScreen> {
-
   final List<Piada> _piadas = [
     Piada(
-      pergunta: "Por que o desenvolvedor levou o computador para o médico?",
-      resposta: "Porque ele esatava com vírus?",
+      pergunta: "Por que o delsenvolvedor levou o computador para o medico?",
+      resposta: "Porque ele estava com virus.",
     ),
     Piada(
-      pergunta: "Por que o livro de matemática tava triste?",
-      resposta: "Porque ele tinha vários problemas",
+      pergunta: "Por que o livro de matematica tava triste?",
+      resposta: "Porque ele tinha vários problemas.",
     ),
   ];
 
   Piada _piadaSelecionada = Piada(
-    pergunta: "Aqui terá uma piada",
-    resposta: "Clique no botão abaixo",
-  );
+    pergunta: "Aqui tera uma piada", 
+    resposta: "Clique no botão abaixo"
+    );
 
-  void _trocarPiada(){
+  void _trocarPiada() {
     final indice = Random().nextInt(_piadas.length);
     setState(() {
-    _piadaSelecionada = _piadas[indice];
+      _piadaSelecionada = _piadas[indice];
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Appiadas")),
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -76,10 +73,13 @@ class _AppiadasScreenState extends State<AppiadasScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "${_piadaSelecionada.pergunta}\n\n${_piadaSelecionada.resposta}",
+                
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
                   fontStyle: FontStyle.italic,
@@ -87,15 +87,18 @@ class _AppiadasScreenState extends State<AppiadasScreen> {
                   color: Colors.orangeAccent,
                 ),
               ),
+
               SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.all(20)
+                    padding: EdgeInsets.symmetric(vertical: 16),
                   ),
-                  onPressed: _trocarPiada, child: Text("Nova piada")),
-              )
+                  onPressed: _trocarPiada,
+                  child: Text("Nova Piada"),
+                ),
+              ),
             ],
           ),
         ),
